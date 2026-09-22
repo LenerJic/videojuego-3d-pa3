@@ -30,4 +30,5 @@ public class Jugador : MonoBehaviour
         rb.linearVelocity = movement;
     }
 
+
 }
