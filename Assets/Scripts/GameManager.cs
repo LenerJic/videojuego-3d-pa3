@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-
+    public AudioSource audioSource;
     public TMP_Text collectionNumberText;
     private int collectionNumber;
     public TMP_Text totalCollectionNumberText;
@@ -21,11 +21,13 @@ public class GameManager : MonoBehaviour
         if (transform.childCount <= 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
         }
     }
 
     public void AddCollection()
     {
+        audioSource.Play();
         collectionNumber++;
         collectionNumberText.text = collectionNumber.ToString();
 
