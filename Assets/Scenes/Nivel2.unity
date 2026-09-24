@@ -2101,6 +2101,7 @@ GameObject:
   - component: {fileID: 1281592852}
   - component: {fileID: 1281592856}
   - component: {fileID: 1281592857}
+  - component: {fileID: 1281592858}
   m_Layer: 0
   m_Name: Killzone
   m_TagString: Untagged
@@ -2234,6 +2235,27 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!65 &1281592858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281592851}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 2.220446e-16, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1359851523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3088,6 +3110,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8688118838293305154, guid: 3286e7c4d01fe7b44b282123e276cf8e, type: 3}
   m_PrefabInstance: {fileID: 3754620312857384129}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1584695157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8676191321443960128, guid: 3a3dd4a62e781fd44a1b7a67d58ce6bc, type: 3}
+  m_PrefabInstance: {fileID: 1878909596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1584695158
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584695157}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1610523931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3565,7 +3617,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8676191321443960128, guid: 3a3dd4a62e781fd44a1b7a67d58ce6bc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1584695158}
   m_SourcePrefab: {fileID: 100100000, guid: 3a3dd4a62e781fd44a1b7a67d58ce6bc, type: 3}
 --- !u!1 &1879563546
 GameObject:

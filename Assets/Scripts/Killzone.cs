@@ -3,13 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class Killzone: MonoBehaviour
 {
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.transform.CompareTag("Player"))
+    //    {
+    //        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //    }
+    //}
 
 }

@@ -3,32 +3,52 @@ using UnityEngine.InputSystem;
 
 public class Jugador : MonoBehaviour
 {
-    public float speed = 5f;
-    private Rigidbody rb;
+    public float speed = 10f;
+    public float gravity = -30f;
+    public float jumpHeight = 5f;
 
-    private Vector2 input;
+    private CharacterController controller;
+    private Vector2 moveInput;
+    private float verticalVelocity;
+    private bool jumpPressed;
 
-    private void Awake()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
+    }
+    private void Update()
+    {
+        bool isGrounded = controller.isGrounded;
+        if (isGrounded && verticalVelocity <0)
+        {
+            verticalVelocity = -2f;
+        }
+
+        if (jumpPressed && isGrounded)
+        {
+            verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            jumpPressed = false;
+        }
+
+        verticalVelocity += gravity * Time.deltaTime;
+
+        Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+        move.y = verticalVelocity / speed;
+
+        controller.Move(move * speed * Time.deltaTime);
     }
 
-    // Lo llama PlayerInput cuando cambia la acción "Move"
     public void OnMove(InputValue value) 
     {
-        input = value.Get<Vector2>();
+        moveInput = value.Get<Vector2>();
     }
 
-    private void FixedUpdate()
+    public void OnJump(InputValue value)
     {
-        Vector3 movement = new Vector3(
-            input.x * speed,
-            rb.linearVelocity.y,
-            input.y * speed
-        );
-        
-        rb.linearVelocity = movement;
+        if (value.isPressed)
+        {
+            jumpPressed = true;
+        }
     }
-
 
 }
