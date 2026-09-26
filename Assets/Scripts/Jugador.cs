@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.UI.Image;
 
 public class Jugador : MonoBehaviour
 {
@@ -11,29 +10,28 @@ public class Jugador : MonoBehaviour
     public float acceleration = 40f;
 
     [Header("Salto")]
-    public float jumpHeight = 10f;
-    public float groundCheckDistance = 0.15f;
+    public float jumpForce = 15f;
 
     private Rigidbody rb;
     private Vector2 moveInput;
     private bool jumpPressed;
+    private bool isGrounded;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        if (rb == null) Debug.LogError("El Player necesita un Rigidbody.");
-
         rb.useGravity = false;
     }
 
     private void FixedUpdate()
     {
+        // Gravedad
         rb.AddForce(
             Physics.gravity * gravityMultiplier,
             ForceMode.Acceleration
         );
 
+        // Movimiento
         Vector3 direction = new Vector3(
             moveInput.x,
             0f,
@@ -44,8 +42,6 @@ public class Jugador : MonoBehaviour
             direction.Normalize();
 
         Vector3 targetVelocity = direction * speed;
-
-        // Conservamos la velocidad vertical
         targetVelocity.y = rb.linearVelocity.y;
 
         rb.linearVelocity = Vector3.MoveTowards(
@@ -54,20 +50,19 @@ public class Jugador : MonoBehaviour
             acceleration * Time.fixedDeltaTime
         );
 
-
-        if (jumpPressed && IsGrounded())
+        // Salto
+        if (jumpPressed && isGrounded)
         {
-            float jumpVelocity = Mathf.Sqrt(
-                jumpHeight * -2f * Physics.gravity.y
+            rb.linearVelocity = new Vector3(
+                rb.linearVelocity.x,
+                jumpForce,
+                rb.linearVelocity.z
             );
 
-            Vector3 velocity = rb.linearVelocity;
-            velocity.y = jumpVelocity;
-
-            rb.linearVelocity = velocity;
-
-            jumpPressed = false;
+            isGrounded = false;
         }
+
+        jumpPressed = false;
     }
 
     public void OnMove(InputValue value)
@@ -83,25 +78,20 @@ public class Jugador : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    private void OnCollisionStay(Collision collision)
     {
-        Vector3 checkPosition = transform.position + Vector3.down * 0.55f;
-
-        return Physics.CheckSphere(
-            checkPosition,
-            groundCheckDistance
-        );
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            if (contact.normal.y > 0.5f)
+            {
+                isGrounded = true;
+                return;
+            }
+        }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnCollisionExit(Collision collision)
     {
-        Gizmos.color = Color.red;
-
-        Vector3 checkPosition = transform.position + Vector3.down * 0.55f;
-
-        Gizmos.DrawWireSphere(
-            checkPosition,
-            groundCheckDistance
-        );
+        isGrounded = false;
     }
 }
