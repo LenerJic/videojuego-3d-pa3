@@ -1014,12 +1014,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3653011677833091805, guid: e6fe7663c7707b74e8514bc078809fa4, type: 3}
   m_PrefabInstance: {fileID: 174143703}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &187706693 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3287948611943350881, guid: 0f3d14a9a6b2ceb469c15d151552a614, type: 3}
-  m_PrefabInstance: {fileID: 1793755509}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &189834047
 --- !u!1 &147530424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,20 +2353,13 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408990010}
-  m_Mesh: {fileID: 7000977067823357390, guid: e011a827265c38e44baeae9310a2a9e2, type: 3}
---- !u!4 &438168035 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8688118838293305154, guid: 3286e7c4d01fe7b44b282123e276cf8e, type: 3}
-  m_PrefabInstance: {fileID: 514342064}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 449688106}
+  m_CullTransparentMesh: 1
 --- !u!1 &442920582 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5384073212271498086, guid: e6fe7663c7707b74e8514bc078809fa4, type: 3}
   m_PrefabInstance: {fileID: 546800331}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 449688106}
-  m_CullTransparentMesh: 1
 --- !u!4 &465100429 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2230107147875355420, guid: cf6b697be7984c2499d5dd9a5d08c778, type: 3}
@@ -7366,7 +7353,6 @@ Transform:
   m_PrefabInstance: {fileID: 3754620312857384129}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1582720451
---- !u!1 &1597830214
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7379,12 +7365,6 @@ GameObject:
   - component: {fileID: 1582720453}
   m_Layer: 5
   m_Name: RawImage
-  - component: {fileID: 1597830215}
-  - component: {fileID: 1597830218}
-  - component: {fileID: 1597830217}
-  - component: {fileID: 1597830216}
-  m_Layer: 0
-  m_Name: FondoNegro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7392,8 +7372,6 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &1582720452
 RectTransform:
---- !u!4 &1597830215
-Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7413,17 +7391,6 @@ Transform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1582720453
 MonoBehaviour:
-  m_GameObject: {fileID: 1597830214}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.99, z: 0.39}
-  m_LocalScale: {x: 3, y: 4, z: 0.1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1745587232}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1597830216
-BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7451,6 +7418,52 @@ BoxCollider:
     height: 1
 --- !u!222 &1582720454
 CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582720451}
+  m_CullTransparentMesh: 1
+--- !u!1 &1597830214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1597830215}
+  - component: {fileID: 1597830218}
+  - component: {fileID: 1597830217}
+  - component: {fileID: 1597830216}
+  m_Layer: 0
+  m_Name: FondoNegro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1597830215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597830214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.99, z: 0.39}
+  m_LocalScale: {x: 3, y: 4, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1745587232}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1597830216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597830214}
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -7521,8 +7534,6 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582720451}
-  m_CullTransparentMesh: 1
   m_GameObject: {fileID: 1597830214}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1610410779
@@ -7796,7 +7807,6 @@ PrefabInstance:
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f3d14a9a6b2ceb469c15d151552a614, type: 3}
 --- !u!1 &1646024410
---- !u!1 &1655330218
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7810,9 +7820,6 @@ GameObject:
   - component: {fileID: 1646024412}
   m_Layer: 5
   m_Name: MenuButton
-  - component: {fileID: 1655330219}
-  m_Layer: 0
-  m_Name: Spawn2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7820,8 +7827,6 @@ GameObject:
   m_IsActive: 1
 --- !u!224 &1646024411
 RectTransform:
---- !u!4 &1655330219
-Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7934,6 +7939,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1646024410}
   m_CullTransparentMesh: 1
+--- !u!1 &1655330218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655330219}
+  m_Layer: 0
+  m_Name: Spawn2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1655330219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655330218}
   serializedVersion: 2
   m_LocalRotation: {x: 0.42261827, y: 0, z: 0, w: 0.9063079}
@@ -9673,7 +9700,6 @@ MeshFilter:
   m_GameObject: {fileID: 1902329592}
   m_Mesh: {fileID: 7000977067823357390, guid: e011a827265c38e44baeae9310a2a9e2, type: 3}
 --- !u!1 &1998363427
---- !u!1 &1983566182
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9687,16 +9713,12 @@ GameObject:
   - component: {fileID: 1998363429}
   m_Layer: 5
   m_Name: RetryButton
-  - component: {fileID: 1983566183}
-  m_Layer: 5
-  m_Name: UIContadorMonedas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &1998363428
---- !u!224 &1983566183
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9810,6 +9832,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1998363427}
   m_CullTransparentMesh: 1
+--- !u!1 &1983566182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983566183}
+  m_Layer: 5
+  m_Name: UIContadorMonedas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1983566183
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1983566182}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}

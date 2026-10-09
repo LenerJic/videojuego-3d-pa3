@@ -33,14 +33,7 @@ public class Enemigo : MonoBehaviour
 
         startPosition = transform.position;
         startRotation = transform.rotation;
-    }
-
-
-    void Update()
-    {
-        if (gameOver) return;
-
-        navMeshAgent.destination = playerTransform.position;
+        posicionInicial = transform.position;
     }
 
     public void ResetEnemyPosition()
@@ -74,6 +67,8 @@ public class Enemigo : MonoBehaviour
 
     void Update()
     {
+
+        if (gameOver) return;
         if (playerTransform == null) return;
 
         float distanciaAlJugador = Vector3.Distance(transform.position, playerTransform.position);

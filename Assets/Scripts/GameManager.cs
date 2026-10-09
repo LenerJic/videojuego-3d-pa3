@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         if (transform.childCount <= 0 && !keySpawned)
         {
             SpawnKey();
-
+        }
         // Si NO hay script Portal en la escena, cambia de nivel automáticamente al recolectar todo
         if (FindAnyObjectByType<Portal>() == null)
         {
