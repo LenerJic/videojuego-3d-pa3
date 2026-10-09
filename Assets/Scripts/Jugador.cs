@@ -17,6 +17,8 @@ public class Jugador : MonoBehaviour
     private bool jumpPressed;
     private bool isGrounded;
 
+    private bool gameOver = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -25,6 +27,8 @@ public class Jugador : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (gameOver) return;
+
         // Gravedad
         rb.AddForce(
             Physics.gravity * gravityMultiplier,
@@ -93,5 +97,18 @@ public class Jugador : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         isGrounded = false;
+    }
+
+    public void SetGameOver()
+    {
+        gameOver = true;
+
+        moveInput = Vector2.zero;
+        jumpPressed = false;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }

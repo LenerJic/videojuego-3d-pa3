@@ -21,8 +21,44 @@ public class Enemigo : MonoBehaviour
     private Vector3 posicionInicial;
     private bool estaPersiguiendo = false;
 
+    private Vector3 startPosition;
+    private Quaternion startRotation;
+
+    private bool gameOver = false;
+
     void Start()
     {
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        playerTransform = FindAnyObjectByType<Jugador>().transform;
+
+        startPosition = transform.position;
+        startRotation = transform.rotation;
+    }
+
+
+    void Update()
+    {
+        if (gameOver) return;
+
+        navMeshAgent.destination = playerTransform.position;
+    }
+
+    public void ResetEnemyPosition()
+    {
+        navMeshAgent.isStopped = true;
+        navMeshAgent.ResetPath();
+        navMeshAgent.Warp(startPosition);
+        transform.rotation = startRotation;
+
+        navMeshAgent.isStopped = false;
+    }
+
+    public void SetGameOver()
+    {
+        gameOver = true;
+
+        navMeshAgent.isStopped = true;
+        navMeshAgent.ResetPath();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         // Guarda el puesto original donde lo colocaste
@@ -74,7 +110,13 @@ public class Enemigo : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player") || collision.gameObject.GetComponent<Jugador>() != null)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            PlayerLives playerLives = collision.gameObject.GetComponent<PlayerLives>();
+
+            if (playerLives != null)
+            {
+                playerLives.LoseLife();
+                ResetEnemyPosition();
+            }
         }
     }
 
