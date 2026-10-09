@@ -10,6 +10,7 @@ public class PlayerLives : MonoBehaviour
     private Jugador jugador;
     private Enemigo enemigo;
     public GameOverUI gameOverUI;
+    public LivesUI livesUI;
 
     private void Start()
     {
@@ -19,6 +20,11 @@ public class PlayerLives : MonoBehaviour
         currentLives = maxLives;
         startPosition = transform.position;
 
+        if (livesUI != null)
+        {
+            livesUI.UpdateHearts(currentLives);
+        }
+
         Debug.Log("Vidas: " + currentLives);
     }
 
@@ -27,6 +33,11 @@ public class PlayerLives : MonoBehaviour
         currentLives--;
 
         currentLives = Mathf.Max(currentLives, 0);
+
+        if (livesUI != null)
+        {
+            livesUI.UpdateHearts(currentLives);
+        }
 
         Debug.Log("Vidas restantes: " + currentLives);
 
