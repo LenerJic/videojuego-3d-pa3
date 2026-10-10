@@ -31,77 +31,59 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void AddCollection()
     {
-        if (transform.childCount <= 0 && !keySpawned)
+        if (audioSource != null) audioSource.Play();
+
+        collectionNumber++;
+
+        if (collectionNumberText != null)
         {
-            SpawnKey();
+            collectionNumberText.text = collectionNumber.ToString();
         }
-        // Si NO hay script Portal en la escena, cambia de nivel automáticamente al recolectar todo
-        if (FindAnyObjectByType<Portal>() == null)
+
+        // Al recolectar la última moneda:
+        if (collectionNumber >= totalCollectionNumber)
         {
-            if (transform.childCount <= 0) 
+            Portal portal = FindAnyObjectByType<Portal>();
+
+            // Prioridad 1: Si hay Portal en la escena (Nivel 2)
+            if (portal != null)
+            {
+                portal.ActivarPortal();
+            }
+            // Prioridad 2: Si no hay Portal pero sí Llave (Nivel 1)
+            else if (keyPrefab != null && !keySpawned)
+            {
+                SpawnKey();
+            }
+            else
             {
                 GanarJuego();
             }
         }
     }
 
-    public void AddCollection()
-    {
-        audioSource.Play();
-        collectionNumber++;
-        collectionNumberText.text = collectionNumber.ToString();
-    }
-
     private void SpawnKey()
     {
-        keySpawned = true; 
+        keySpawned = true;
 
-        if (keyPrefab == null)
+        if (keySpawnPoints != null && keySpawnPoints.Length > 0)
         {
-            Debug.LogError("¡No has asignado el Prefab de la Llave en el Inspector!");
-            return;
+            int randomIndex = Random.Range(0, keySpawnPoints.Length);
+            Transform selectedPoint = keySpawnPoints[randomIndex];
+            Instantiate(keyPrefab, selectedPoint.position, selectedPoint.rotation);
         }
 
-        if (keySpawnPoints == null || keySpawnPoints.Length == 0)
-        {
-            Debug.LogError("¡No has asignado Puntos de Spawn para la llave en el Inspector!");
-            return;
-        }
-
-       // llave en un punto aleatorio
-        int randomIndex = Random.Range(0, keySpawnPoints.Length);
-        Transform selectedPoint = keySpawnPoints[randomIndex];
-        Instantiate(keyPrefab, selectedPoint.position, selectedPoint.rotation);
-
-        // Mostrar el mensaje en la UI
         if (subtextMessage != null)
         {
             subtextMessage.text = mensajeLlave;
-            subtextMessage.gameObject.SetActive(true); // Asegura que el mensaje sea visible
+            subtextMessage.gameObject.SetActive(true);
         }
 
-        // Ocultar el contador de monedas
         if (UIContadorMonedas != null)
         {
             UIContadorMonedas.SetActive(false);
-        }
-
-        Debug.Log($"¡Todas las monedas recolectadas! Llave aparecida en: {selectedPoint.name}");
-        if (audioSource != null) audioSource.Play(); 
-
-        collectionNumber++; 
-        if (collectionNumberText != null)
-        {
-            collectionNumberText.text = collectionNumber.ToString(); 
-        }
-
-        //  Si SÍ existe el portal en la escena, lo activa al llegar al total de monedas
-        Portal portal = FindAnyObjectByType<Portal>();
-        if (portal != null && collectionNumber >= totalCollectionNumber)
-        {
-            portal.ActivarPortal();
         }
     }
 

@@ -5,7 +5,7 @@ public class GameOverButtons : MonoBehaviour
 {
     public void Retry()
     {
-        SceneManager.LoadScene("Nivel1");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu()
