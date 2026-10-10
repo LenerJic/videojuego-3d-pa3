@@ -2,18 +2,16 @@ using UnityEngine;
 
 public class SeguimientoCamara : MonoBehaviour
 {
-
     [Header("Objetivo a Seguir")]
     public Transform target;
 
     [Header("Configuración de Posición")]
-
     public Vector3 offset = new Vector3(-6f, 10f, -8f);
     public float velocidadSuave = 5f;
 
     void Start()
     {
-        // Si no asignas el objetivo manualmente, busca automáticamente al Jugador en la escena
+        // Si no asignas el objetivo manualmente en el Inspector, busca al Jugador al iniciar
         if (target == null)
         {
             Jugador jugador = FindAnyObjectByType<Jugador>();
@@ -24,16 +22,15 @@ public class SeguimientoCamara : MonoBehaviour
         }
     }
 
-    void LateUpdate()
+    // Se usa FixedUpdate para que el movimiento de la cámara vaya a la par con la física del Rigidbody
+    void FixedUpdate()
     {
         if (target == null) return;
 
+        // Posición a la que debe llegar la cámara
         Vector3 posicionDeseada = target.position + offset;
 
-        Vector3 posicionSuave = Vector3.Lerp(transform.position, posicionDeseada, velocidadSuave * Time.deltaTime);
-        transform.position = posicionSuave;
-
-        // Mantiene la cámara mirando directamente a la esfera
-        transform.LookAt(target);
+        // Interpolación fluida que evita tirones y desincronizaciones de FPS
+        transform.position = Vector3.Lerp(transform.position, posicionDeseada, velocidadSuave * Time.fixedDeltaTime);
     }
 }
